@@ -63,7 +63,7 @@ dll			Utils::get_DLLs(const char* dll_name, DWORD pid)
 			CloseHandle(SnapShot);
 
 			result.addr = (DWORD_PTR)ModuleEntry.modBaseAddr;
-			result.hMod = (DWORD)ModuleEntry.hModule;
+			result.hMod = ModuleEntry.hModule;
 			result.size = ModuleEntry.modBaseSize;
 
 			return(result);
@@ -101,7 +101,7 @@ DWORD				Utils::sigscan::get_address(std::vector<int> signature, dll Module, HAN
 			if (signature[j] != -1 && signature[j] != memBuffer[i + j])
 				break;
 			if (j + 1 == signature.size())
-				return (Module.hMod + i);
+				return ((DWORD)Module.hMod + i);
 		}
 	}
 	return (NULL);
