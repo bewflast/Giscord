@@ -1,7 +1,13 @@
 # Giscord
 Discord Rich Presence для GMod'a, не требующий поддержки со стороны сервера.
 
-### Установка:
+
+### Готовый бинарник:
+1) Перейти в самый последний [workflow run](https://github.com/bewflast/Giscord/actions) (самый верхний)
+2) Скачать файл giscord.exe
+
+
+### Сборка:
 1) Если нет системы сборки CMake, то [скачать и установить её](https://cmake.org/download/)
 2) `git clone --recursive https://github.com/bewflast/Giscord.git`
 3)  `.\build.bat`
