@@ -7,12 +7,12 @@ void	update_server_info(server* srv, GmodProcInfo game)
 	
 	if (srv->max_player)
 	{
-		srv->hostname = (srv->max_player == 1 ? "Single player" : Utils::readString( game.GetProcessID(), game.GetDLLBase("client.dll").addr + Utils::sigscan::offsets::host_name, 1));
+		srv->hostname = (srv->max_player == 1 ? "Одиночная игра" : Utils::readString( game.GetProcessID(), game.GetDLLBase("client.dll").addr + Utils::sigscan::offsets::host_name, 1));
 		srv->current_players = (srv->max_player == 1 ? 0 : Utils::readMem<int>(game.GetProcessID(), game.GetDLLBase("client.dll").addr + Utils::sigscan::offsets::cur_players));
 		srv->ip_port = (srv->max_player == 1 ? 0 : Utils::readString( game.GetProcessID(), game.GetDLLBase("engine.dll").addr + Utils::sigscan::offsets::ip_port, 2));
 	}
 	else
-		srv->hostname = "Menu";
+		srv->hostname = "Главное меню";
 	
 }
 
@@ -27,7 +27,7 @@ int main()
 	
 	RPC = new DRPC("989609317185507418");
 
-	srv.hostname = "Menu";
+	srv.hostname = "Главное меню";
 	last_hostname = srv.hostname;
 	RPC->update(&srv, true);
 
@@ -50,7 +50,7 @@ int main()
 		if (now)
 			update_server_info(&srv, gmod);
 		else
-			srv.hostname = "Idle";
+			srv.hostname = "Спит";
 		
 		RPC->update(&srv, upd_time);
 	}

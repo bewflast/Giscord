@@ -15,12 +15,12 @@ void DRPC::update(server* info, bool update_time)
 	std::string	hname = info->hostname;
 
 	this->presence->details = info->hostname;
-	if (hname != "Menu" && hname != "Single player" && hname != "Idle")
+	if (hname != "Главное меню" && hname != "Одиночная игра" && hname != "Спит")
 	{
 		std::string		plys;
-		plys = info->current_players ? std::to_string(info->current_players) + "/" + std::to_string(info->max_player) : "Joining...";
+		plys = info->current_players ? std::to_string(info->current_players) + "/" + std::to_string(info->max_player) : "Заходит...";
 		this->presence->state = plys.c_str();
-		this->presence->buttons[0].label = "Join!";
+		this->presence->buttons[0].label = "Присоединиться!";
 		this->presence->buttons[0].url = ((std::string)"steam://connect/" + (std::string)info->ip_port).c_str();
 	}
 	else
