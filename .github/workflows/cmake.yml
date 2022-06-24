@@ -26,6 +26,6 @@ jobs:
     - uses: actions/upload-artifact@v3
       with:
         name: giscord.exe
-        path: ${{github.workspace}}/build/Releases/giscord.exe
+        path: build\Releases\giscord.exe
 
       
