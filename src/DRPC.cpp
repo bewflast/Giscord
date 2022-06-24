@@ -15,16 +15,20 @@ void DRPC::update(server* info, bool update_time)
 	std::string	hname = info->hostname;
 
 	this->presence->details = info->hostname;
-	
 	if (hname != "Menu" && hname != "Single player" && hname != "Idle")
 	{
 		std::string		plys;
 		plys = info->current_players ? std::to_string(info->current_players) + "/" + std::to_string(info->max_player) : "Joining...";
 		this->presence->state = plys.c_str();
+		this->presence->buttons[0].label = "Join!";
+		this->presence->buttons[0].url = ((std::string)"steam://connect/" + (std::string)info->ip_port).c_str();
 	}
 	else
-		this->presence->state = NULL;
-
+	{
+		this->presence->buttons[0].label = NULL;
+		this->presence->buttons[0].url = NULL;	
+		this->presence->state = "";
+	}
 	if (update_time)
 		this->presence->startTimestamp = std::time(nullptr);
 	Discord_UpdatePresence(this->presence);
