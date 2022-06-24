@@ -16,7 +16,7 @@ typedef struct s_dll_info
 {
 
 	DWORD_PTR	addr;
-	DWORD		hMod;
+	HMODULE		hMod;
 	DWORD		size;
 
 } dll;
