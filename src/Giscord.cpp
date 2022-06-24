@@ -13,7 +13,7 @@ void	update_server_info(server* srv, GmodProcInfo game)
 	}
 	else
 		srv->hostname = "Menu";
-	std::cout << srv->ip_port << " " << srv->current_players << std::endl;
+	
 }
 
 int main()
