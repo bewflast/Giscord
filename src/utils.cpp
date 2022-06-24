@@ -64,7 +64,7 @@ dll			Utils::get_DLLs(const char* dll_name, DWORD pid)
 
 			result.addr = (DWORD_PTR)ModuleEntry.modBaseAddr;
 			result.hMod = (DWORD)ModuleEntry.hModule;
-			result.size = (DWORD)ModuleEntry.modBaseSize;
+			result.size = ModuleEntry.modBaseSize;
 
 			return(result);
 		}
